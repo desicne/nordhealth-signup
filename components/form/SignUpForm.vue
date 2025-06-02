@@ -47,20 +47,25 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { Form, Field, useForm } from 'vee-validate'
 import { signupSchema, type SignupFormValues } from '~/validation/signupSchema'
 import { useSignup } from '~/composables/useSignup'
+import type { SignupPayload } from '~/types/User'
 
 const showPassword = ref(false)
 const toggle = () => (showPassword.value = !showPassword.value)
+
 const schema = signupSchema
+const { values } = useForm<SignupFormValues>()
+
 const { submit, submitting } = useSignup()
-const { values } = useForm()
+const router = useRouter()
 
 const onSubmit = async (values: SignupFormValues) => {
-  const result = await submit(values)
+  const result = await submit(values as SignupPayload)
   if (result.success) {
-    navigateTo('/success')
+    router.push('/success')
   }
 }
 </script>
