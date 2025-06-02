@@ -1,12 +1,17 @@
 import { signupSchema } from '~/validation/signupSchema'
+import { ValidationError } from 'yup'
 
 describe('signupSchema', () => {
   it('fails with empty data', async () => {
     try {
       await signupSchema.validate({}, { abortEarly: false })
-    } catch (err: any) {
-      expect(err.errors).toContain('Email is required')
-      expect(err.errors).toContain('Password is required')
+    } catch (err: unknown) {
+      if (err instanceof ValidationError) {
+        expect(err.errors).toContain('Email is required')
+        expect(err.errors).toContain('Password is required')
+      } else {
+        throw err // rethrow unexpected errors
+      }
     }
   })
 
