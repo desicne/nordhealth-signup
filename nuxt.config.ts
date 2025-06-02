@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   vue: {
     compilerOptions: {
       isCustomElement: (tag: string) => tag.includes('-'),
-    }
+    },
   },
   plugins: [
     { src: '~/plugins/pcds.client.ts', mode: 'client' },

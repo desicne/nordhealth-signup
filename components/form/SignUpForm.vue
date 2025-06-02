@@ -4,14 +4,7 @@
     <Form :validation-schema="schema" @submit="onSubmit">
       <provet-stack gap="m">
         <Field name="email" v-slot="{ field, errorMessage }">
-          <provet-input
-            v-bind="field"
-            id="email"
-            label="Email"
-            type="email"
-            name="email"
-            expand
-          />
+          <provet-input v-bind="field" id="email" label="Email" type="email" name="email" expand />
           <small v-if="errorMessage" class="error-text">{{ errorMessage }}</small>
         </Field>
 

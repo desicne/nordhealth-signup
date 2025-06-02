@@ -21,9 +21,7 @@
         <p class="success-message">
           Thanks for joining! We'll keep you posted with occasional updates.
         </p>
-        <provet-button variant="primary" @click="goHome">
-          Back to Sign Up
-        </provet-button>
+        <provet-button variant="primary" @click="goHome"> Back to Sign Up </provet-button>
       </provet-stack>
     </provet-card>
   </div>
